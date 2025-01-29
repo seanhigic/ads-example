@@ -1,0 +1,14 @@
+body {
+  padding: 0;
+  padding-top: 3.5em;
+  margin: 0;
+  color: #333;
+}
+
+.acme-background {
+  background-color: #2AAA8A!important;
+}
+
+body .nav-link {
+  color: #EEE;
+}

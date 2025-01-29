@@ -1,0 +1,23 @@
+.sidebar {
+    position: fixed;
+    max-width: 200px;
+    min-height: 90vh !important;
+    z-index: 100;
+    padding: 48px 0 0;
+    padding-left: 1em !important;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-label {
+    font-size: 1.2em;
+    color: #FFF;
+}
+
+.sidebar a {
+    color: #FFF;
+}
+
+.sidebar a::selection {
+    color: #96DED1;
+    background-color: none;
+}

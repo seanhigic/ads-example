@@ -1,0 +1,23 @@
+
+
+name: ads-example
+
+services:
+  
+  acme-store:
+    image: local/acme-store:latest
+    build: .
+    container_name: 'acme-store'
+    restart: no
+    ports: 
+      - 4200:4200
+    environment:
+      - ADS_EXAMPLE_USER_FIRST_NAME=Foghorn
+      - ADS_EXAMPLE_USER_LAST_NAME=Leghorn
+      - ADS_EXAMPLE_USER_ID=foghorn.leghorn@warner.com
+      - ADS_EXAMPLE_SAD_PRODUCT_ID=11
+      - ADS_EXAMPLE_SAD_OBJECT_TRACKING_ID=7777d939-9dab-48d7-9c60-e7b93c6b9f1d 
+      - ADS_EXAMPLE_STORAGE_CONTROLLER="session"
+
+
+ 

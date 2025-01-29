@@ -1,0 +1,32 @@
+.acme-brandname {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.75em;
+    font-weight: bolder;
+    color: #FFF;
+    padding-left: 75px;
+}
+
+.acme-tagline {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .7em;
+    font-weight: normal;
+    color: #EEE;
+    padding-left: 75px;
+    font-style: italic;
+    margin-top: -10px;
+}
+
+.acme-logo {
+    position: fixed;
+    top: 10;
+    left: 10;
+}
+
+.search-form .row .col-auto{
+    min-width: 400px!important;
+}
+
+.navbar-text, 
+.navbar-text a {
+        color: #EEE !important;
+}
