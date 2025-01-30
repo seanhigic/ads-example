@@ -13,7 +13,7 @@ import { ConfigController } from './controllers/ConfigController';
 import { ProductController } from './controllers/ProductController';
 import { ShoppableAdsTrackingController } from './controllers/ShoppableAdsTrackingController';
 import { UserController } from './controllers/UserController';
-import useLayoutRunOnce from './shared/layoutRunOnceHook';
+import useRunOnce from './shared/runOnceHook';
 
 function App() {
 
@@ -27,7 +27,7 @@ function App() {
   let shoppableAdsTrackingController = ShoppableAdsTrackingController(undefined);
   const productController = ProductController();
   
-  useLayoutRunOnce({
+  useRunOnce({
     fn: () => {
         userController.getCurrentUser().then((user) => {
             setCurrentUser(user);

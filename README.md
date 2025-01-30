@@ -44,7 +44,7 @@ The sample code primarily explores using the [react-intersection-observer](https
 - Ad image is 1px viewable
 - Ad image is 50% viewable
 
-The intersection observer component usedf in the [ProductCard](./ui/react-store/src/components/ProductCard.tsx) component:
+The intersection observer component used in the [ProductCard](./ui/react-store/src/components/ProductCard.tsx) component:
 
 ```
 <InView root={document.getElementsByClassName('products')[0] } threshold={[.01, .5]} as="div" onChange={(inView, entry) => viewStatus(inView, product, entry)}>
