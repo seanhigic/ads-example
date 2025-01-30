@@ -21,7 +21,7 @@ function ProductCard({ config, currentUser, product, sponsoredAd, isAdded }: Pro
     const [firedBTR, setfiredBTR] = useState(false);
     const [firedViewable, setfiredViewable] = useState(false);
     const [fired1px, setfired1px] = useState(false);
-    
+
     const shoppableAdsTrackingController = ShoppableAdsTrackingController(config);
 
     async function buildTrackingEvent(product: Product): Promise<TrackingEvent | undefined> {
@@ -42,7 +42,7 @@ function ProductCard({ config, currentUser, product, sponsoredAd, isAdded }: Pro
                     if (tev) {
                         shoppableAdsTrackingController.logBTREvent(tev);
                         setfiredBTR(true);
-                    }    
+                    }
                 });
             }
         }
@@ -50,9 +50,9 @@ function ProductCard({ config, currentUser, product, sponsoredAd, isAdded }: Pro
 
     function handleAddToCart(product: Product) {
         buildTrackingEvent(product).then((tev) => {
-        if (tev) {
-            shoppableAdsTrackingController.logAddedToCartEvent(tev);
-        }
+            if (tev) {
+                shoppableAdsTrackingController.logAddedToCartEvent(tev);
+            }
         });
     }
 
@@ -67,21 +67,21 @@ function ProductCard({ config, currentUser, product, sponsoredAd, isAdded }: Pro
     function viewStatus(inView: boolean, product: Product, entry: IntersectionObserverEntry) {
 
         buildTrackingEvent(product).then((tev) => {
-        if (tev) {
-            if (inView) {
-                if (entry.intersectionRatio >= .01
-                    && !fired1px) {
-                    shoppableAdsTrackingController.log1pxEvent(tev);
-                    setfired1px(true);
-                } else if (entry.intersectionRatio >= .5
-                    && !firedViewable
-                ) {
-                    shoppableAdsTrackingController.logViewableEvent(tev);
-                    setfiredViewable(true);
+            if (tev) {
+                if (inView) {
+                    if (entry.intersectionRatio >= .01
+                        && !fired1px) {
+                        shoppableAdsTrackingController.log1pxEvent(tev);
+                        setfired1px(true);
+                    } else if (entry.intersectionRatio >= .5
+                        && !firedViewable
+                    ) {
+                        shoppableAdsTrackingController.logViewableEvent(tev);
+                        setfiredViewable(true);
+                    }
                 }
             }
-        }
-    });
+        });
     }
 
     function isAd(): boolean {
@@ -96,19 +96,23 @@ function ProductCard({ config, currentUser, product, sponsoredAd, isAdded }: Pro
                         <div className="sponsored-ad-tag-wrapper">
                             <span className="sponsored-ad-tag">Sponsored</span>
                         </div>
-                        <div className="product-image">
-                            <InView root={document.getElementsByClassName('products')[0] } threshold={[.01, .5]} as="div" onChange={(inView, entry) => viewStatus(inView, product, entry)}>
+                        <InView root={document.getElementsByClassName('products')[0]} threshold={[.01, .5]} as="div" onChange={(inView, entry) => viewStatus(inView, product, entry)}>
+                            <div className="product-image">
                                 <img src={product.image} alt={product.name} onClick={() => { handleProductClick(product) }} />
-                            </InView>
-                        </div>
+                            </div>
+                            <h4 className="product-name" title={product.name}>{product.name}</h4>
+                            <p className="product-price">{product.price}</p>
+                        </InView>
                     </>
                 ) : (
+                    <>
                     <div className="product-image">
                         <img src={product.image} alt={product.name} />
                     </div>
+                    <h4 className="product-name" title={product.name}>{product.name}</h4>
+                    <p className="product-price">{product.price}</p>
+                    </>
                 )}
-                <h4 className="product-name" title={product.name}>{product.name}</h4>
-                <p className="product-price">{product.price}</p>
                 <div className="product-action">
                     <button
                         className={!isAdded ? "" : "added"}
